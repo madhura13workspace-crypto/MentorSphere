@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solved Doubts | Mentor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <button class="nav-menu-btn" id="menu-btn">&#9776;</button>
+    <div class="logo">MentorSphere</div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="profile-container">
+      <button class="sidebar-btn profile-btn">👤</button>
+      <p>Profile</p>
+    </div>
+
+    <button class="sidebar-btn" onclick="window.location.href='solvedoubt.html'">Solve Doubts</button>
+    <button class="sidebar-btn" onclick="window.location.href='solvedmentordoubts.html'">Solved Doubts</button>
+
+    <button class="sidebar-btn">Logout</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h2 class="ask-title" style="margin-bottom:20px;">Doubts You Have Solved</h2>
+
+    <div id="solvedList" class="doubt-list">
+      <!-- Mentor's solved doubts will appear here dynamically from Firebase -->
+    </div>
+  </div>
+
+  <footer>© 2025 Peer Mentor Support Portal | Made for Students 💙</footer>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const sidebar = document.getElementById('sidebar');
+
+  menuBtn.addEventListener('click', () => sidebar.classList.toggle('active'));
+
+  document.addEventListener('click', (e) => {
+    if(!sidebar.contains(e.target) && !menuBtn.contains(e.target)){
+      sidebar.classList.remove('active');
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Doubts | Peer Mentor Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <button class="nav-menu-btn" id="menu-btn">&#9776;</button>
+    <div class="logo">MentorSphere</div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="profile-container">
+      <a href="menteeprofile.html" class="sidebar-btn profile-btn">👤</a>
+      <p>Profile</p>
+    </div>
+    <button class="sidebar-btn">Logout</button>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <div class="ask-container">
+      <h2 class="ask-title">Submit Your Doubt</h2>
+      <form id="askForm">
+        <label class="ask-label" for="domain">Select Domain</label>
+        <select id="domain" class="ask-select" required>
+          <option value="">--Select--</option>
+          <option value="mathematics">Mathematics</option>
+          <option value="os">Operating System</option>
+          <option value="ds">Data Structures</option>
+          <option value="oe">Open Elective</option>
+          <option value="dmas">Digital Marketing & Social Media</option>
+          <option value="oop">Object Oriented Programming</option>
+          <option value="dbms">Database Management System</option>
+          <option value="qra">Quantitative Reasoning & Analysis</option>
+        </select>
+
+        <label class="ask-label" for="doubt">Describe Your Doubt</label>
+        <textarea id="doubt" class="ask-textarea" placeholder="Type your doubt here..." required></textarea>
+
+        <label class="ask-label">Upload Image (Optional)</label>
+        <div class="ask-upload" id="uploadBox">
+          <div class="upload-inner">
+            <span class="upload-icon">⬆️</span>
+            <p>Click to upload or drag image here</p>
+          </div>
+          <input type="file" id="image" accept="image/*" hidden>
+        </div>
+
+        <button type="submit" class="ask-btn">Submit Doubt</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>© 2025 Peer Mentor Support Portal | Made for Students 💙</footer>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const sidebar = document.getElementById('sidebar');
+  const uploadBox = document.getElementById('uploadBox');
+  const fileInput = document.getElementById('image');
+
+  menuBtn.addEventListener('click', () => sidebar.classList.toggle('active'));
+
+  document.addEventListener('click', (e) => {
+    if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+      sidebar.classList.remove('active');
+    }
+  });
+
+  uploadBox.addEventListener('click', () => fileInput.click());
+
+  document.getElementById('askForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Your doubt has been submitted!");
+    this.reset();
+  });
+</script>
+
+</body>
+</html>

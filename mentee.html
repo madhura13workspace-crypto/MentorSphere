@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentee Dashboard | Peer Mentor Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <button class="nav-menu-btn" id="menu-btn">&#9776;</button>
+    <div class="logo">MentorSphere</div>
+    
+    <!-- Explore Roadmaps button -->
+    <button class="nav-menu-btn" 
+            onclick="window.location.href='explore-roadmaps.html'" 
+            style="margin-left:auto; font-size:1rem; padding:8px 12px; border-radius:8px; 
+                   background:linear-gradient(90deg,#00c8ff,#006eff); color:white; border:none; 
+                   cursor:pointer; box-shadow:0 0 10px #00baff;">
+      Explore Roadmaps
+    </button>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="profile-container">
+      <button class="sidebar-btn profile-btn" onclick="window.location.href='menteeprofile.html'">👤</button>
+      <p>Profile</p>
+    </div>
+
+    <!-- ⭐ NEW BUTTON YOU REQUESTED ⭐ -->
+    <button class="sidebar-btn" onclick="window.location.href='solvedmenteedoubts.html'">
+      ✅ Solved Doubts
+    </button>
+
+    <button class="sidebar-btn">Logout</button>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <div style="text-align:center; margin-bottom: 20px;">
+      <button class="ask-btn" onclick="window.location.href='askdoubts.html'">Ask Doubts</button>
+    </div>
+
+    <div class="cards-section">
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <p>Keep helping others grow!</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <p>Share knowledge and learn too.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <p>Teaching strengthens your skills!</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <p>Make peer learning fun and easy.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Peer Mentor Support Portal | Made for Students 💙</footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+      if(!sidebar.contains(e.target) && !menuBtn.contains(e.target)){
+        sidebar.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

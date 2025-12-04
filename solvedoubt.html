@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentor Dashboard | Peer Mentor Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== EXTRA STYLING FOR DOUBTS PAGE ===== */
+    .doubt-card {
+      background: rgba(15, 22, 50, 0.85);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 200, 255, 0.2);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .doubt-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #00c8ff, 0 0 50px #0094ff;
+    }
+
+    .doubt-header {
+      font-size: 1rem;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+      margin-right: 8px;
+    }
+
+    .answer-btn {
+      padding: 8px 20px;
+      font-size: 1rem;
+      border-radius: 25px;
+      background: linear-gradient(90deg, #7a58ff, #4a2aff);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 15px #7a58ff;
+      transition: 0.3s;
+    }
+
+    .answer-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #a080ff;
+    }
+
+    .answer-area {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background: rgba(10,15,40,0.9);
+      border-radius: 15px;
+      box-shadow: 0 0 12px rgba(0,200,255,0.15);
+    }
+
+    .answer-area textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #1c2a55;
+      background: rgba(10,15,40,0.95);
+      color: #e5e9ff;
+      resize: none;
+      margin-bottom: 10px;
+      outline: none;
+    }
+
+    .answer-area .upload-box {
+      padding: 15px;
+      margin-bottom: 10px;
+      border: 2px dashed #00baff;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      color: #c7d4ff;
+    }
+
+    .answer-area .submit-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #00c8ff, #006eff);
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 20px #00baff, 0 0 50px #007bff;
+      transition: 0.3s;
+    }
+
+    .answer-area .submit-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 30px #64d1ff, 0 0 70px #00e5ff;
+    }
+
+    #subjectFilter {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(10,15,40,0.9);
+      color: #e5e9ff;
+      border: 1px solid #1c2a55;
+      box-shadow: 0 0 12px rgba(0,200,255,0.15);
+      margin-bottom: 20px;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <button class="nav-menu-btn" id="menu-btn">&#9776;</button>
+    <div class="logo">MentorSphere</div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="profile-container">
+      <a href="mentorprofile.html" class="sidebar-btn profile-btn">👤</a>
+      <p>Profile</p>
+    </div>
+    <button class="sidebar-btn">Logout</button>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <div style="text-align:center; margin-bottom: 20px;">
+      <label for="subjectFilter">Filter by Subject:</label>
+      <select id="subjectFilter">
+        <option value="all">All Subjects</option>
+        <option value="mathematics">Mathematics</option>
+        <option value="os">Operating System</option>
+        <option value="ds">Data Structures</option>
+        <option value="oe">Open Elective</option>
+        <option value="dmas">Digital Marketing & Social Media</option>
+        <option value="oop">Object Oriented Programming</option>
+        <option value="dbms">Database Management System</option>
+        <option value="qra">Quantitative Reasoning & Analysis</option>
+      </select>
+    </div>
+
+    <div id="doubtCards">
+      <!-- Mathematics -->
+      <div class="doubt-card" data-subject="mathematics">
+        <div class="doubt-header"><span class="emoji">💡</span>What is the difference between differentiation and integration?</div>
+        <button class="answer-btn">Answer</button>
+        <div class="answer-area">
+          <textarea placeholder="Type your answer here..."></textarea>
+          <div class="upload-box">Upload Image (optional)</div>
+          <button class="submit-btn">Submit</button>
+        </div>
+      </div>
+
+      <!-- Operating System -->
+      <div class="doubt-card" data-subject="os">
+        <div class="doubt-header"><span class="emoji">💡</span>Explain the concept of deadlock in OS.</div>
+        <button class="answer-btn">Answer</button>
+        <div class="answer-area">
+          <textarea placeholder="Type your answer here..."></textarea>
+          <div class="upload-box">Upload Image (optional)</div>
+          <button class="submit-btn">Submit</button>
+        </div>
+      </div>
+
+      <!-- Data Structures -->
+      <div class="doubt-card" data-subject="ds">
+        <div class="doubt-header"><span class="emoji">💡</span>What is a linked list and its types?</div>
+        <button class="answer-btn">Answer</button>
+        <div class="answer-area">
+          <textarea placeholder="Type your answer here..."></textarea>
+          <div class="upload-box">Upload Image (optional)</div>
+          <button class="submit-btn">Submit</button>
+        </div>
+      </div>
+
+      <!-- Open Elective -->
+      <div class="doubt-card" data-subject="oe">
+        <div class="doubt-header"><span class="emoji">💡</span>Explain the main topic of your open elective.</div>
+        <button class="answer-btn">Answer</button>
+        <div class="answer-area">
+          <textarea placeholder="Type your answer here..."></textarea>
+          <div class="upload-box">Upload Image (optional)</div>
+          <button class="submit-btn">Submit</button>
+        </div>
+      </div>
+
+      <!-- Digital Marketing & Social Media -->
+      <div class="doubt-card" data-subject="dmas">
+        <div class="doubt-header"><span class="emoji">💡</span>What are the main strategies of social media marketing?</div>
+        <button class="answer-btn">Answer</button>
+        <div class="answer-area">
+          <textarea placeholder="Type your answer here..."></textarea>
+          <div class="upload-box">Upload Image (optional)</div>
+          <button class="submit-btn">Submit</button>
+        </div>
+      </div>
+
+      <!-- Object Oriented Programming -->
+      <div class="doubt-card" data-subject="oop">
+        <div class="doubt-header"><span class="emoji">💡</span>Explain the four pillars of OOP.</div>
+        <button class="answer-btn">Answer</button>
+        <div class="answer-area">
+          <textarea placeholder="Type your answer here..."></textarea>
+          <div class="upload-box">Upload Image (optional)</div>
+          <button class="submit-btn">Submit</button>
+        </div>
+      </div>
+
+      <!-- Database Management System -->
+      <div class="doubt-card" data-subject="dbms">
+        <div class="doubt-header"><span class="emoji">💡</span>What is normalization in DBMS?</div>
+        <button class="answer-btn">Answer</button>
+        <div class="answer-area">
+          <textarea placeholder="Type your answer here..."></textarea>
+          <div class="upload-box">Upload Image (optional)</div>
+          <button class="submit-btn">Submit</button>
+        </div>
+      </div>
+
+      <!-- Quantitative Reasoning & Analysis -->
+      <div class="doubt-card" data-subject="qra">
+        <div class="doubt-header"><span class="emoji">💡</span>How do you solve ratio and proportion problems efficiently?</div>
+        <button class="answer-btn">Answer</button>
+        <div class="answer-area">
+          <textarea placeholder="Type your answer here..."></textarea>
+          <div class="upload-box">Upload Image (optional)</div>
+          <button class="submit-btn">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Peer Mentor Support Portal | Made for Students 💙</footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if(!sidebar.contains(e.target) && !menuBtn.contains(e.target)){
+        sidebar.classList.remove('active');
+      }
+    });
+
+    // Filter doubts
+    const subjectFilter = document.getElementById('subjectFilter');
+    const doubtCards = document.querySelectorAll('.doubt-card');
+
+    subjectFilter.addEventListener('change', () => {
+      const selected = subjectFilter.value;
+      doubtCards.forEach(card => {
+        if (selected === 'all' || card.dataset.subject === selected) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Answer button toggle
+    doubtCards.forEach(card => {
+      const answerBtn = card.querySelector('.answer-btn');
+      const answerArea = card.querySelector('.answer-area');
+      const submitBtn = card.querySelector('.submit-btn');
+
+      answerBtn.addEventListener('click', () => {
+        answerArea.style.display = 'block';
+        answerArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      submitBtn.addEventListener('click', () => {
+        card.remove();
+      });
+    });
+  </script>
+</body>
+</html>

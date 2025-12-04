@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentor Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="main-content">
+    <h2>Mentor Profile</h2>
+    <p>Email: <span id="emailDisplay"></span></p>
+    <form id="profileForm">
+      <!-- Additional profile inputs -->
+      <input type="text" placeholder="Bio / Info">
+      <button type="submit" class="ask-submit-btn">Save Profile</button>
+    </form>
+  </div>
+
+  <footer>MentorSphere © 2025</footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.6.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA7AVBnd9raULfBcQQLx0iHCTkkLRQrWkI",
+      authDomain: "mentorsphere-zeal.firebaseapp.com",
+      projectId: "mentorsphere-zeal",
+      storageBucket: "mentorsphere-zeal.appspot.com",
+      messagingSenderId: "292322652558",
+      appId: "1:292322652558:web:3132884fd1eb10c444b4df"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, user => {
+      if(user) {
+        document.getElementById('emailDisplay').innerText = user.email;
+      } else {
+        window.location.href = "login.html";
+      }
+    });
+
+    const profileForm = document.getElementById('profileForm');
+    profileForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert("Profile saved (extend later with Firestore)");
+    });
+  </script>
+</body>
+</html>

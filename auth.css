@@ -1,0 +1,112 @@
+/* auth.css - Styles only for Login & Signup pages */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #e5e9ff;
+  background: radial-gradient(circle at top, #071739, #060b1e);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  width: 100%;
+  background: rgba(20, 25, 65, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8bc8ff;
+  text-shadow: 0 0 10px #007bff;
+}
+
+.welcome-container {
+  max-width: 450px;
+  margin: 60px auto;
+  background: rgba(15, 22, 50, 0.85);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
+  animation: fadeUp 1s ease;
+}
+
+.welcome-title {
+  font-size: 1.7rem;
+  color: #88c5ff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px #007bff;
+}
+
+.welcome-container select,
+.welcome-container input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #1c2a55;
+  background: rgba(10, 15, 40, 0.9);
+  color: #e5e9ff;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 0 0 12px rgba(0, 200, 255, 0.15);
+}
+
+.welcome-container select:focus,
+.welcome-container input:focus {
+  border-color: #00baff;
+  box-shadow: 0 0 20px #00baff;
+}
+
+.login-signup-btn {
+  background: linear-gradient(90deg, #006eff, #3ad0ff);
+  border: none;
+  padding: 12px 25px;
+  margin: 10px 0;
+  border-radius: 40px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 15px #00baff;
+  transition: all 0.3s ease;
+}
+
+.login-signup-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 25px #64d1ff, 0 0 50px #00baff;
+  background: linear-gradient(90deg, #4aa8ff, #00e5ff);
+}
+
+footer {
+  background: rgba(10, 15, 40, 0.9);
+  width: 100%;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  color: #bcd6ff;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
+  text-align: center;
+  margin-top: 50px;
+}
+
+.fade-up {
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .welcome-container {
+    margin: 30px 15px;
+  }
+}

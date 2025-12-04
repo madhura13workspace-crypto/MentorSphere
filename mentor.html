@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentor Dashboard | Peer Mentor Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <button class="nav-menu-btn" id="menu-btn">&#9776;</button>
+    <div class="logo">MentorSphere</div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="profile-container">
+      <button class="sidebar-btn profile-btn" onclick="window.location.href='mentorprofile.html'">👤</button>
+      <p>Profile</p>
+    </div>
+
+    <!-- ⭐ NEW BUTTON YOU REQUESTED ⭐ -->
+    <button class="sidebar-btn" onclick="window.location.href='solvedmentordoubts.html'">
+      ✅ Solved Doubts
+    </button>
+
+    <button class="sidebar-btn">Logout</button>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <div style="text-align:center; margin-bottom:30px;">
+      <button class="ask-btn" onclick="window.location.href='solvedoubt.html'">Solve Doubts</button>
+    </div>
+
+    <div class="cards-section">
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <p>Guide mentees and inspire them!</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <p>Share your expertise confidently.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <p>Help others strengthen their knowledge.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <p>Collaborate and mentor effectively.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Peer Mentor Support Portal | Made for Students 💙</footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+      if(!sidebar.contains(e.target) && !menuBtn.contains(e.target)){
+        sidebar.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

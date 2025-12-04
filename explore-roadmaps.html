@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Roadmaps | Peer Mentor Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Internal CSS for roadmap cards */
+    .roadmap-container {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .roadmap-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #88c5ff;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px #007bff;
+    }
+
+    .roadmap-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+    }
+
+    .roadmap-card {
+      background: rgba(15, 22, 50, 0.85);
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 200, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .roadmap-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #00c8ff, 0 0 50px #0094ff;
+    }
+
+    .roadmap-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .roadmap-card p {
+      color: #c7d4ff;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <button class="nav-menu-btn" id="menu-btn">&#9776;</button>
+    <div class="logo">MentorSphere</div>
+    <button class="nav-menu-btn" 
+            onclick="window.location.href='mentee.html'" 
+            style="margin-left:auto; font-size:1rem; padding:8px 12px; border-radius:8px; 
+                   background:linear-gradient(90deg,#00c8ff,#006eff); color:white; border:none; 
+                   cursor:pointer; box-shadow:0 0 10px #00baff;">
+      Back to Dashboard
+    </button>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="profile-container">
+      <button class="sidebar-btn profile-btn" onclick="window.location.href='menteeprofile.html'">👤</button>
+      <p>Profile</p>
+    </div>
+    <button class="sidebar-btn">Logout</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="roadmap-container">
+    <h2 class="roadmap-title">Explore Roadmaps</h2>
+    <div class="roadmap-cards">
+
+      <a href="https://roadmap.sh/frontend" target="_blank" class="roadmap-card">
+        <div class="roadmap-card-icon">💻</div>
+        <p>Frontend Developer</p>
+      </a>
+
+      <a href="https://roadmap.sh/backend" target="_blank" class="roadmap-card">
+        <div class="roadmap-card-icon">🖥️</div>
+        <p>Backend Developer</p>
+      </a>
+
+      <a href="https://roadmap.sh/cyber-security" target="_blank" class="roadmap-card">
+        <div class="roadmap-card-icon">🔐</div>
+        <p>Cybersecurity</p>
+      </a>
+
+      <a href="https://roadmap.sh/blockchain" target="_blank" class="roadmap-card">
+        <div class="roadmap-card-icon">⛓️</div>
+        <p>Blockchain</p>
+      </a>
+
+      <a href="https://roadmap.sh/full-stack" target="_blank" class="roadmap-card">
+        <div class="roadmap-card-icon">🌐</div>
+        <p>Full Stack Developer</p>
+      </a>
+
+      <a href="https://roadmap.sh/ai-engineer" target="_blank" class="roadmap-card">
+        <div class="roadmap-card-icon">🤖</div>
+        <p>AI Engineer</p>
+      </a>
+
+      <a href="https://roadmap.sh/data-analyst" target="_blank" class="roadmap-card">
+        <div class="roadmap-card-icon">📊</div>
+        <p>Data Analyst</p>
+      </a>
+
+      <a href="https://roadmap.sh/ux-design" target="_blank" class="roadmap-card">
+        <div class="roadmap-card-icon">🎨</div>
+        <p>UX Designer</p>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>© 2025 Peer Mentor Support Portal | Made for Students 💙</footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if(!sidebar.contains(e.target) && !menuBtn.contains(e.target)){
+        sidebar.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
