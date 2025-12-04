@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signup</title>
-  <link rel="stylesheet" href="auth.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up | Peer Mentor Portal</title>
+  <link rel="stylesheet" href="auth.css" />
 </head>
 <body>
 
-  <div class="welcome-container">
-    <h2 class="welcome-title">Signup</h2>
+  <div class="navbar">
+    <div class="logo">MentorSphere</div>
+  </div>
+
+  <div class="welcome-container fade-up">
+    <h1 class="welcome-title">Create Account 🌟</h1>
+
     <form id="signupForm">
       <select id="role" required>
         <option value="">Select Role</option>
@@ -17,28 +22,36 @@
         <option value="Mentor">Mentor</option>
       </select>
 
-      <input type="text" id="name" placeholder="Full Name" required>
-      <input type="text" id="dept" placeholder="Department" required>
+      <input type="text" id="name" placeholder="Enter Full Name" required />
+      <input type="text" id="dept" placeholder="Enter Department" required />
       <select id="year" required>
         <option value="">Select Year</option>
-        <option value="1">1st</option>
-        <option value="2">2nd</option>
-        <option value="3">3rd</option>
-        <option value="4">4th</option>
+        <option value="1">1st Year</option>
+        <option value="2">2nd Year</option>
+        <option value="3">3rd Year</option>
+        <option value="4">4th Year</option>
       </select>
-
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
+      <input type="email" id="email" placeholder="Enter Email" required />
+      <input type="password" id="password" placeholder="Create Password" required />
 
       <button type="submit" class="login-signup-btn">Register</button>
     </form>
+
+    <p style="margin-top: 15px; color:#c8d5ff;">
+      Already have an account? 
+      <a href="login.html" style="color:#64d1ff;">Login</a>
+    </p>
   </div>
 
-  <footer>MentorSphere © 2025</footer>
+  <footer>
+    © 2025 Peer Mentor Support Portal | Made for Students 💙
+  </footer>
 
+  <!-- Firebase -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.1/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.1/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyA7AVBnd9raULfBcQQLx0iHCTkkLRQrWkI",
@@ -51,19 +64,42 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
 
     const signupForm = document.getElementById('signupForm');
-    signupForm.addEventListener('submit', (e) => {
+
+    signupForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      const role = document.getElementById('role').value;
+      const name = document.getElementById('name').value;
+      const dept = document.getElementById('dept').value;
+      const year = document.getElementById('year').value;
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          alert("Account Created Successfully!");
-          window.location.href = "login.html";
-        })
-        .catch(err => alert("Error: " + err.message));
+      try {
+        // Create user in Firebase Auth
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Save extra data in Firestore
+        await setDoc(doc(db, "users", user.uid), {
+          uid: user.uid,
+          role,
+          name,
+          dept,
+          year,
+          email
+        });
+
+        alert("Account created successfully! Redirecting to login.");
+        window.location.href = "login.html";
+
+      } catch (error) {
+        console.error(error);
+        alert("Error: " + error.message);
+      }
     });
   </script>
 </body>
